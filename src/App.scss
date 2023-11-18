@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  margin-top: 50px;
+
+  button {
+    font-size: 16px;
+    margin: 10px;
+    padding: 5px 10px;
+  }
+
+  .bingo-board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .bingo-row {
+      display: flex;
+
+      .bingo-cell {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2px;
+        font-size: 14px;
+
+        &.called {
+          background-color: #aaffaa;
+        }
+      }
+    }
+  }
+}
