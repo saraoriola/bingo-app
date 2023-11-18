@@ -1,4 +1,3 @@
-// En Bingo75.jsx
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import NumberBoard from './NumberBoard';
@@ -35,7 +34,6 @@ const Bingo90 = ({ numBalls, onStart }) => {
           }}
         />
       )}
-      {!gameInProgress && <button onClick={() => setGameCountdown(3)}>Comenzar Partida</button>}
     </div>
   );
 };

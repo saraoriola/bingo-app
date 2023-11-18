@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const GameTimer = ({ countdown }) => (
   <div>
-    <p>{countdown}</p>
-    <p>¡Que comience el juego!</p>
+    <p className="countdown">{countdown}</p>
+    <p className="start-message">¡Que comience el juego!</p>
   </div>
 );
 

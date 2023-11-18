@@ -1,8 +1,8 @@
-// En App.jsx
 import React, { useState } from 'react';
-import './App.scss';
 import Bingo75 from './components/Bingo75';
 import Bingo90 from './components/Bingo90';
+import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
+import './App.scss';
 
 const App = () => {
   const [selectedBingo, setSelectedBingo] = useState(null);
@@ -31,36 +31,46 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <h1>Bingo Game</h1>
+    <Box maxW='32rem'>
 
       {selectedBingo === null ? (
-        <div>
-          <button onClick={() => handleSelectBingo(75)}>75 Bolas</button>
-          <button onClick={() => handleSelectBingo(90)}>90 Bolas</button>
-        </div>
+        <Box>
+          <Heading>Roll & Win</Heading>
+          <Text mt={8} fontSize='xl'>
+            Marca tus números, comparte risas <br/>
+            y celebra juntos cada victoria.   
+          </Text>
+          <Flex mt={6}>
+            <Button 
+              shadow={'md'}
+              className="bgImage75" 
+              onClick={() => handleSelectBingo(75)}>
+              <Heading>75 bolas</Heading>
+            </Button>
+            <Button 
+              shadow={'md'}
+              className="bgImage90" ml={6} 
+              onClick={() => handleSelectBingo(90)}>
+              <Heading>90 bolas</Heading>
+            </Button>
+          </Flex>
+        </Box>
       ) : (
         selectedBingo === 75 ? (
           <Bingo75
             numBalls={75}
             onStart={handleStartGame}
-            onPause={() => handlePauseGame()}
+            onPause={handlePauseGame}
           />
         ) : (
           <Bingo90
             numBalls={90}
             onStart={handleStartGame}
-            onPause={() => handlePauseGame()}
+            onPause={handlePauseGame}
           />
         )
       )}
-
-      {selectedBingo !== null && (
-        <div>
-          {/* Aquí puedes mostrar información adicional si es necesario */}
-        </div>
-      )}
-    </div>
+    </Box>
   );
 };
 

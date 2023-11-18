@@ -1,6 +1,6 @@
-// En NumberBoard.jsx
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Box, Table, Tbody, Tr, Td, Heading, Flex } from '@chakra-ui/react';
 
 const NumberBoard = ({ numBalls }) => {
   const [selectedNumbers, setSelectedNumbers] = useState([]);
@@ -23,39 +23,74 @@ const NumberBoard = ({ numBalls }) => {
   const lastNumbers = getLastNNumbers(3);
   const lastNumber = lastNumbers[0];
 
-  return (
-    <div>
-      <h3>Números</h3>
-      <ul>
-        <li style={{ fontSize: '24px' }}>
-          {lastNumber && <strong>{lastNumber}</strong>}
-        </li>
-      </ul>
-      <h4>
-        <strong>Últimos 3 Números:</strong> {lastNumbers.join(', ')}
-      </h4>
-
-      <h3>Tabla de Números</h3>
-      <table>
-        <tbody>
-          {allNumbers.reduce((rows, number, index) => {
-            if (index % 10 === 0) {
-              rows.push([]);
-            }
-            rows[rows.length - 1].push(
-              <td key={index} style={{ border: '1px solid black', padding: '5px' }}>
-                {selectedNumbers.includes(number) ? number : ''}
-              </td>
-            );
-            return rows;
-          }, []).map((row, rowIndex) => (
-            <tr key={rowIndex}>{row}</tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+  const cellSize = 50;
+  const totalCells = 90;
+  const cellsPerRow = 10;
+  const rows = Array.from({ length: totalCells / cellsPerRow }, (_, rowIndex) =>
+    allNumbers.slice(rowIndex * cellsPerRow, (rowIndex + 1) * cellsPerRow)
   );
-};
+
+return (
+  <Flex
+    width="100%"
+    height="100%"
+    align="center"
+    justify="space-between"
+  >
+    <Flex
+      flexDirection="column"
+      margin="auto"
+      align="center"
+      justify="center"
+    >
+      <Box width="100%" textAlign="center" mb={2}>
+        <Heading className='headingNum'>
+          {lastNumber && <strong>{lastNumber}</strong>}
+        </Heading>
+      </Box>
+      <Box width="100%" textAlign="center">
+        <h4>
+          <strong>Últimos 3 Números:</strong> {lastNumbers.join(', ')}
+        </h4>
+      </Box>
+    </Flex>
+    <Flex
+      margin="auto"
+      align="center"
+      justify="center"
+    >
+      <Box>
+        <Table>
+          <Tbody>
+            {rows.map((row, rowIndex) => (
+              <Tr key={rowIndex}>
+                {row.map((number) => (
+                  <Td
+                    key={number}
+                    border="1px"
+                    borderColor="#98E8AB"
+                    p="5px"
+                    w={`${cellSize}px`}
+                    h={`${cellSize}px`}
+                    minW={`${cellSize}px`}
+                    minH={`${cellSize}px`}
+                    fontSize="28px"
+                    textAlign={'center'}
+                  >
+                    {selectedNumbers.includes(number) ? number : ''}
+                  </Td>
+                ))}
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      </Box>
+    </Flex>
+  </Flex>
+);
+
+
+                };
 
 NumberBoard.propTypes = {
   numBalls: PropTypes.number.isRequired,
