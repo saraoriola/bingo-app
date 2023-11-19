@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Bingo75 from './components/Bingo75';
 import Bingo90 from './components/Bingo90';
+import GameControls from './components/GameControls';
 import { Box, Heading, Text, Button, Flex, Card } from '@chakra-ui/react';
 import './App.scss';
 
@@ -29,6 +30,13 @@ const App = () => {
   const handlePauseGame = () => {
     setGamePaused(!gamePaused);
   };
+
+  const handleRestartGame = () => {
+    setSelectedBingo(null);
+    setGameCountdown(0);
+    setGamePaused(false);
+  };
+
 
   return (
     <Box>
@@ -137,13 +145,16 @@ const App = () => {
           numBalls={75}
           onStart={handleStartGame}
           onPause={handlePauseGame}
+
         />
       ) : (
         <Bingo90
           numBalls={90}
           onStart={handleStartGame}
           onPause={handlePauseGame}
+
         />
+        
       )}
     </Box>
   );

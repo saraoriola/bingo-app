@@ -102,6 +102,7 @@ import number97 from '../assets/numbers/97.png';
 import number98 from '../assets/numbers/98.png';
 import number99 from '../assets/numbers/99.png';
 import number100 from '../assets/numbers/100.png';
+import GameControls from './GameControls';
 
 const numberImages = {
   1: number1,
@@ -207,7 +208,7 @@ const numberImages = {
 };
 
 
-const NumberBoard = ({ numBalls }) => {
+const NumberBoard = ({ numBalls, onPause, onStart }) => {
   const [selectedNumbers, setSelectedNumbers] = useState([]);
   const allNumbers = Array.from({ length: numBalls }, (_, index) => index + 1);
 
@@ -235,59 +236,46 @@ const NumberBoard = ({ numBalls }) => {
     allNumbers.slice(rowIndex * cellsPerRow, (rowIndex + 1) * cellsPerRow)
   );
 return (
-<>
+<Box className='boxBingo'>
 
-
-<Grid
-  templateAreas={`"header header"
-                  "nav main"
-                  "nav footer"`}
-  gridTemplateRows={'50px 1fr 30px'}
-  gridTemplateColumns={'150px 1fr'}
-  h='200px'
-  gap='1'
-  color='blackAlpha.700'
-  fontWeight='bold'
->
-  <GridItem pl='2' bg='orange.300' area={'header'}>
-    Header
-  </GridItem>
-  <GridItem pl='2' bg='pink.300' area={'nav'}>
-    Nav
-  </GridItem>
-  <GridItem pl='2' bg='green.300' area={'main'}>
-    Main
-  </GridItem>
-  <GridItem pl='2' bg='blue.300' area={'footer'}>
-    Footer
-  </GridItem>
-</Grid>
-
-
-  <Box width="100%" textAlign="center">
-    <Flex width="100%" justify="center">
-      <Box width="50%" textAlign="center">
+ <Grid
+    templateColumns="30% 70%"  
+    className='boxOut'
+  >
+    <GridItem pl='2' className='numberBox'>
+      
+       <Box textAlign="center" p={10}>
         {lastNumber && (
           <img
             src={numberImages[lastNumber]}
             alt={`Number ${lastNumber}`}
-            style={{ maxWidth: '100%', maxHeight: '300px' }}
+            style={{ width: '100%', height: '100%'}}
           />
         )}
-        <Text fontSize="lg" mt={4}>
-          Últimos 3 Números: {lastNumbers.join(', ')}
-        </Text>
       </Box>
-      <Box width="50%" textAlign="center">
-        <Table>
+
+          <Flex fontSize="lg" mt={4} justify="space-between" p={5}>
+            {lastNumbers.map((number, index) => (
+              <Box key={index} width="30%" height="30%">
+                <img
+                  src={numberImages[number]}
+                  alt={`Number ${number}`}
+                  style={{ width: '100%', height: '100%' }}
+                />
+              </Box>
+            ))}
+          </Flex>
+
+    </GridItem>
+
+    <GridItem pl='2'>
+       <Table>
           <Tbody>
             {rows.map((row, rowIndex) => (
               <Tr key={rowIndex}>
                 {row.map((number) => (
                   <Td
                     key={number}
-                    border="1px"
-                    borderColor="#98E8AB"
                     p="5px"
                     w={`${cellSize}px`}
                     h={`${cellSize}px`}
@@ -308,16 +296,12 @@ return (
             ))}
           </Tbody>
         </Table>
-      </Box>
-    </Flex>
-  </Box>
-
-
-
-</>
+  <GameControls/>
+    </GridItem>
+  </Grid>
+</Box>
 );
-
-                  };
+};
 
 NumberBoard.propTypes = {
   numBalls: PropTypes.number.isRequired,

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import NumberBoard from './NumberBoard';
-import GameControls from './GameControls';
 import GameTimer from './GameTimer';
 
 const Bingo90 = ({ numBalls, onStart }) => {
@@ -25,14 +24,6 @@ const Bingo90 = ({ numBalls, onStart }) => {
     <div>
       {gameCountdown > 0 && <GameTimer countdown={gameCountdown} />}
       {gameInProgress && <NumberBoard numBalls={numBalls} />}
-      {gameInProgress && (
-        <GameControls
-          onStart={() => {}}
-          onPause={() => {
-            console.log('Juego en pausa');
-          }}
-        />
-      )}
     </div>
   );
 };
