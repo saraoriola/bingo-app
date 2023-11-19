@@ -1,9 +1,10 @@
 :root {
-  body {
-    background-color: #000000;
-    background-size: cover;
+body {
+    background: url('/src/assets/background.png') center/cover,
+      linear-gradient(#000000, #1E1E1E, #000000);
     font-family: sans-serif;
     color: #F2F2F2;
+    height: 100vh;
   }
 
   .bgImage75,
