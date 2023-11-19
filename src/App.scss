@@ -2,66 +2,64 @@
   body {
     background-color: #000000;
     background-size: cover;
-    background-position: center;
     font-family: sans-serif;
     color: #F2F2F2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
   }
 
-.bgImage75 {
-  width: 455px;
-    height: 100px;
-      background-color: #9D94D7;
-}
-
-.bgImage75:hover {
-      background-color: transparent;
-        border: 2px solid #9D94D7;
-        color: #9D94D7;
-  
-}
-
+  .bgImage75,
   .bgImage90 {
     width: 455px;
     height: 100px;
+  }
+
+  .bgImage75 {
+    background-color: #9D94D7;
+  }
+
+  .bgImage90 {
     background-color: #98E8AB;
   }
 
-    .bgImage90:hover {
-      background-color: transparent;
-      border: 2px solid #98E8AB;
-              color: #98E8AB;
-  
-    }
-.game-timer {
-  color: #FFFFFF;
-  background-color: #282c34;
-  padding: 20px;
-  border-radius: 8px; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  display: inline-block;
-}
+  .bgImage75:hover,
+  .bgImage90:hover {
+    background-color: transparent;
+    border: 2px solid;
+    color: inherit;
+  }
 
-.countdown {
-  font-size: 20em; 
-  margin: 0; 
-  color: #98E8AB; 
-}
+  .bgImage75:hover {
+    border-color: #9D94D7;
+    color: #9D94D7;
+  }
 
-.start-message {
-  font-size: 1.5em; 
-  margin-top: 10px; 
-}
+  .bgImage90:hover {
+    border-color: #98E8AB;
+    color: #98E8AB;
+  }
 
-.headingNum {
-  font-size: 15em;
-  margin: 0;
-  color: #98E8AB;
-}
+  .game-timer {
+    color: #FFFFFF;
+    background-color: #282c34;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
 
+  .countdown {
+    font-size: 20em;
+    margin: 0;
+    color: #98E8AB;
+  }
+
+  .start-message {
+    font-size: 1.5em;
+    margin-top: 10px;
+  }
+
+  .headingNum {
+    font-size: 15em;
+    margin: 0;
+    color: #98E8AB;
+  }
 }

@@ -31,7 +31,7 @@ const App = () => {
   };
 
   return (
-    <Box maxW='32rem'>
+    <Box>
 
       {selectedBingo === null ? (
         <Box>
