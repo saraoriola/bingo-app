@@ -32,14 +32,48 @@ const App = () => {
 
   return (
     <Box>
-
       {selectedBingo === null ? (
-        <Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          height="100vh"
+        >
           <Heading>Roll & Win</Heading>
-          <Text mt={8} fontSize='xl'>
-            Marca tus números, comparte risas <br/>
-            y celebra juntos cada victoria.   
+          <Text mt={8} fontSize="xl"           
+          textAlign="center"
+          justifyContent="center">
+            ¡La diversión comienza aquí! ¿Estás listo para ganar? <br />
+            Haz clic en "Empezar a Jugar" para seleccionar tu tipo de Bingo.
           </Text>
+            <Button
+              paddingLeft={8}
+              paddingRight={8}
+              backgroundColor={'#ECC94B'}
+              borderRadius={'20px'}
+              mt={6}
+              shadow={'md'}
+              transition="all 0.3s"
+              _hover={{
+                backgroundColor: 'transparent',
+                border: '1px solid #ECC94B',                
+                color: '#ECC94B',
+              }}
+              onClick={() => handleSelectBingo(0)}
+            >
+              Empezar a Jugar
+            </Button>
+        </Box>
+      ) : selectedBingo === 0 ? (
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          height="100vh"
+        >
+          Selecciona tu tipo de Bingo
           <Flex mt={6}>
             <Button 
               shadow={'md'}
@@ -55,20 +89,18 @@ const App = () => {
             </Button>
           </Flex>
         </Box>
+      ) : selectedBingo === 75 ? (
+        <Bingo75
+          numBalls={75}
+          onStart={handleStartGame}
+          onPause={handlePauseGame}
+        />
       ) : (
-        selectedBingo === 75 ? (
-          <Bingo75
-            numBalls={75}
-            onStart={handleStartGame}
-            onPause={handlePauseGame}
-          />
-        ) : (
-          <Bingo90
-            numBalls={90}
-            onStart={handleStartGame}
-            onPause={handlePauseGame}
-          />
-        )
+        <Bingo90
+          numBalls={90}
+          onStart={handleStartGame}
+          onPause={handlePauseGame}
+        />
       )}
     </Box>
   );
