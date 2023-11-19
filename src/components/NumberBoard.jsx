@@ -236,7 +236,8 @@ const NumberBoard = ({ numBalls, onPause, onStart }) => {
     allNumbers.slice(rowIndex * cellsPerRow, (rowIndex + 1) * cellsPerRow)
   );
 return (
-<Box className='boxBingo'>
+<Box className='boxBingo' 
+padding={10}>
 
  <Grid
     templateColumns="30% 70%"  
