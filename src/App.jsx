@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Bingo75 from './components/Bingo75';
 import Bingo90 from './components/Bingo90';
-import { Box, Heading, Text, Button, Flex } from '@chakra-ui/react';
+import { Box, Heading, Text, Button, Flex, Card } from '@chakra-ui/react';
 import './App.scss';
 
 const App = () => {
@@ -75,18 +75,61 @@ const App = () => {
         >
           Selecciona tu tipo de Bingo
           <Flex mt={6}>
-            <Button 
-              shadow={'md'}
-              className="bgImage75" 
-              onClick={() => handleSelectBingo(75)}>
-              <Heading>75 bolas</Heading>
-            </Button>
-            <Button 
+          <Card
+            shadow={'md'}
+            className="bgImage75"
+            borderRadius={'20px'}
+            onClick={() => handleSelectBingo(75)}
+            style={{
+              background: 'linear-gradient(to bottom right, #4351CF, #7983DD)',
+              width:'279px',
+              height:'307px',
+              overflow: 'hidden',
+            }}
+          >
+            <Heading ml={6} mt={6} color={'#FFFFFF'}>75 bolas</Heading>
+            <Text fontSize='sm' ml={6} mr={6} color={'#FFFFFF'}>Números del 1 al 75, patrones emocionantes. ¡Sé rápido y disfruta del juego!</Text>
+            <img
+              src="/src/assets/75bolas.png"
+              alt="Imagen de fondo"
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                top: '120px',
+                left: '120px',
+                width: '200px', 
+                height: '200px', 
+              }}
+            />
+          </Card>
+            <Card 
+              borderRadius={'20px'}
               shadow={'md'}
               className="bgImage90" ml={6} 
-              onClick={() => handleSelectBingo(90)}>
-              <Heading>90 bolas</Heading>
-            </Button>
+              onClick={() => handleSelectBingo(90)}
+              style={{
+              background: 'linear-gradient(to bottom right, #43CF84, #ABDD79)',
+              width:'279px',
+              height:'307px',
+              overflow: 'hidden',
+
+            }}
+            >
+              <Heading ml={6} mt={6} color={'#FFFFFF'}>90 bolas</Heading>
+              <Text fontSize='sm' ml={6} mr={6} color={'#FFFFFF'}>Con 90 oportunidades, ¿quién será el primero en gritar ¡Bingo!?</Text>
+               <img
+              src="/src/assets/90bolas.png"
+              alt="Imagen de fondo"
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                top: '120px',
+                left: '120px',
+                width: '200px', 
+                height: '200px', 
+              }}
+            />
+            </Card>
           </Flex>
         </Box>
       ) : selectedBingo === 75 ? (
