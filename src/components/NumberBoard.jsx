@@ -236,24 +236,18 @@ const NumberBoard = ({ numBalls, onPause, onStart }) => {
     allNumbers.slice(rowIndex * cellsPerRow, (rowIndex + 1) * cellsPerRow)
   );
 return (
-<Box className='boxBingo' 
-padding={10}>
-
- <Grid
-    templateColumns="30% 70%"  
-    className='boxOut'
-  >
-    <GridItem pl='2' className='numberBox'>
-      
-       <Box textAlign="center" p={10}>
-        {lastNumber && (
-          <img
-            src={numberImages[lastNumber]}
-            alt={`Number ${lastNumber}`}
-            style={{ width: '100%', height: '100%'}}
-          />
-        )}
-      </Box>
+ <Box className='boxBingo' padding={10} display="flex" alignItems="center" justifyContent="center">
+      <Grid templateColumns="30% 70%" className='boxOut'>
+        <GridItem pl='2' className='numberBox'>
+          <Box textAlign="center" p={10}>
+            {lastNumber && (
+              <img
+                src={numberImages[lastNumber]}
+                alt={`Number ${lastNumber}`}
+                style={{ width: '100%', height: '100%' }}
+              />
+            )}
+          </Box>
 
           <Flex fontSize="lg" mt={4} justify="space-between" p={5}>
             {lastNumbers.map((number, index) => (
@@ -266,16 +260,14 @@ padding={10}>
               </Box>
             ))}
           </Flex>
+        </GridItem>
 
-    </GridItem>
-
-    <GridItem pl='2'>
-       <Table>
-          <Tbody>
+        <GridItem pl='2' mt={4} ml={8}>
+          <Box>
             {rows.map((row, rowIndex) => (
-              <Tr key={rowIndex}>
+              <Box key={rowIndex} display="flex">
                 {row.map((number) => (
-                  <Td
+                  <Box
                     key={number}
                     p="5px"
                     w={`${cellSize}px`}
@@ -283,24 +275,27 @@ padding={10}>
                     minW={`${cellSize}px`}
                     minH={`${cellSize}px`}
                     textAlign="center"
+                    m="4px"
                   >
                     {selectedNumbers.includes(number) && (
                       <img
                         src={numberImages[number]}
                         alt={`Number ${number}`}
-                        style={{ maxWidth: '100%', maxHeight: '100%' }}
+                        style={{
+                          maxWidth: '100%',
+                          maxHeight: '100%',
+                        }}
                       />
                     )}
-                  </Td>
+                  </Box>
                 ))}
-              </Tr>
+              </Box>
             ))}
-          </Tbody>
-        </Table>
-  <GameControls/>
-    </GridItem>
-  </Grid>
-</Box>
+          </Box>
+          {/* <GameControls /> */}
+        </GridItem>
+      </Grid>
+    </Box>
 );
 };
 
