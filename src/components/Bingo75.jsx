@@ -23,7 +23,6 @@ const Bingo75 = ({ numBalls, onStart }) => {
 
   return (
     <div>
-      <h2>{numBalls} Bolas</h2>
       {gameCountdown > 0 && <GameTimer countdown={gameCountdown} />}
       {gameInProgress && <NumberBoard numBalls={numBalls} />}
       {gameInProgress && (
